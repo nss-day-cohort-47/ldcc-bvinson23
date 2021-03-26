@@ -31,7 +31,7 @@ applicationElement.addEventListener("click", event => {
 					startLDSnacks();
 				} else {
 					//got a false value - no user
-					const entryElement = document.querySelector(".entryForm");
+					const entryElement = document.querySelector(".mainContainer");
 					entryElement.innerHTML = `<p class="center">That user does not exist. Please try again or register for your free account.</p> ${LoginForm()} <hr/> <hr/> ${RegisterForm()}`;
 				}
 			})
@@ -39,7 +39,8 @@ applicationElement.addEventListener("click", event => {
 		//collect all the details into an object
 		const userObject = {
 			name: document.querySelector("input[name='registerName']").value,
-			email: document.querySelector("input[name='registerEmail']").value
+			email: document.querySelector("input[name='registerEmail']").value,
+			admin: false
 		}
 		registerUser(userObject)
 			.then(dbUserObj => {
