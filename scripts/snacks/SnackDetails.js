@@ -1,5 +1,4 @@
 export const SnackDetails = (snackObject) => {
-	console.log(snackObject)
 	return `
 	<div class="col">
 		<div class="card shadow-sm" >
