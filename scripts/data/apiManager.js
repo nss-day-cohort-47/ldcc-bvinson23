@@ -49,6 +49,7 @@ export const registerUser = (userObj) => {
 ///// snack functions
 
 let snackCollection = [];
+let snackToppingCollection = [];
 
 export const useSnackCollection = () => {
   //Best practice: we don't want to alter the original state, so
@@ -56,6 +57,11 @@ export const useSnackCollection = () => {
   //the spread operator makes quick work
   const snackCollectionCopy = [...snackCollection]
   return snackCollectionCopy;
+}
+
+export const useSnackToppingCollection = () => {
+	const snackTopppingCollectionCopy = [...snackToppingCollection]
+	return snackTopppingCollectionCopy;
 }
 
 export const getSnacks = () => {
@@ -75,4 +81,8 @@ export const getSingleSnack = (snackId) => {
 export const getSnackToppings = () => {
 	return fetch(`${apiURL}/snackToppings?_expand=topping&_expand=snack`)
 	.then(response => response.json())
+	.then(parsedResponse => {
+		snackToppingCollection = parsedResponse
+		return parsedResponse;
+	})
 }

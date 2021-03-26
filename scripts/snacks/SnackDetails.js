@@ -1,3 +1,5 @@
+import { getSnackToppings } from "../data/apiManager.js"
+
 export const SnackDetails = (snackObject) => {
 	return `
 	<div class="col">
