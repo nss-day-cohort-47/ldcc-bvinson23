@@ -71,3 +71,8 @@ export const getSingleSnack = (snackId) => {
 	return fetch(`${apiURL}/snacks/${snackId}?_expand=type&_expand=shape&_expand=inFlavor&_expand=season`)
 	.then(response => response.json())
 }
+
+export const getSnackToppings = () => {
+	return fetch(`${apiURL}/snackToppings?_expand=topping&_expand=snack`)
+	.then(response => response.json())
+}
