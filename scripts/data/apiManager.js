@@ -72,7 +72,12 @@ export const getSingleSnack = (snackId) => {
 	.then(response => response.json())
 }
 
-export const getToppings = (snackId) => {
-	return fetch(`${apiURL}/snackToppings?snackId=${snackId}&_expand=topping`)
+export const getToppings = () => {
+	return fetch(`${apiURL}/toppings`)
+	.then(response => response.json())
+}
+
+export const filterSnackToppings = (toppingId) => {
+	return fetch(`${apiURL}/snackToppings?toppingId=${toppingId}&_expand=snack`)
 	.then(response => response.json())
 }
