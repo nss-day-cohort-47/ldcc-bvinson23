@@ -30,6 +30,12 @@ export const NavBar = () => {
 			<button id="add-type" class="btn btn-outline-primary" type="button">Add A Type</button>
 			<input name="newType"></input>
 		</div>
+		<div>
+			<button id="edit-toppping" class="btn btn-outline-primary" type="button">Edit A Topping</button>
+			<select id="editList" class="form-select form-select btn-info" aria-label="Select A Topping To Edit">
+				<option selected>Select A Topping To Edit</option>
+			</select>
+		</div>
 		</div>
 	</nav>` : ""
 

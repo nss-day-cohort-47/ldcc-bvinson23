@@ -92,3 +92,14 @@ export const postNewType = (typeObj) => {
 	})
 	.then(response => response.json())
 }
+
+export const editTopping = (toppingObj) => {
+	return fetch(`${apiURL}/toppings`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(toppingObj)
+	})
+	.then(response => response.json())
+}

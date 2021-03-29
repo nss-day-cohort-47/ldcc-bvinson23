@@ -172,11 +172,21 @@ const startLDSnacks = () => {
 	showSnackList();
 	showFooter();
 	createToppingList();
+	createEditToppingList();
 
 }
 
 
 const createToppingList = () => {
+	const entryHTMLSelector = document.querySelector(".form-select");
+	getToppings().then(response => {
+		response.forEach((toppingObj, index) => {
+			entryHTMLSelector.options[index+1] = new Option(toppingObj.name, toppingObj.id)
+		})
+	})
+}
+
+const createEditToppingList = () => {
 	const entryHTMLSelector = document.querySelector(".form-select");
 	getToppings().then(response => {
 		response.forEach((toppingObj, index) => {
