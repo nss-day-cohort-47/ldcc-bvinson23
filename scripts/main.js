@@ -8,9 +8,8 @@ import { SnackDetails } from "./snacks/SnackDetails.js";
 import { Footer } from "./nav/Footer.js";
 import {
 	logoutUser, setLoggedInUser, loginUser, registerUser, getLoggedInUser,
-	getSnacks, getSingleSnack, getToppings, getToppingsForNav
+	getSnacks, getSingleSnack, getToppings, filterSnackToppings
 } from "./data/apiManager.js";
-import { makeToppingList } from "./snacks/Toppings.js"
 
 
 
@@ -92,6 +91,21 @@ const showDetails = (snackObj, snackToppings) => {
 
 //topping listeners
 
+applicationElement.addEventListener("change", event => {
+	if (event.target.id === "navList") {
+		let snackSelector = event.target.value
+		filterSnackToppings(snackSelector)
+		.then(response => {
+			let snackArray = [];
+			response.forEach(topping => {
+				snackArray.push(topping.snack)
+			})
+			const listElement = document.querySelector("#mainContent")
+			listElement.innerHTML = SnackList(snackArray)
+		})
+	}
+})
+
 // applicationElement.addEventListener("change", event => {
 // 	if (event.target.id === "form-select form-select btn-info") {
 // 		const
@@ -143,8 +157,17 @@ const startLDSnacks = () => {
 	applicationElement.innerHTML += `<div id="mainContent"></div>`;
 	showSnackList();
 	showFooter();
-	showToppingList();
+	createToppingList();
 
 }
 
+
+const createToppingList = () => {
+	const entryHTMLSelector = document.querySelector(".form-select");
+	getToppings().then(response => {
+		response.forEach((toppingObj, index) => {
+			entryHTMLSelector.options[index+1] = new Option(toppingObj.name, toppingObj.id)
+		})
+	})
+}
 checkForUser();

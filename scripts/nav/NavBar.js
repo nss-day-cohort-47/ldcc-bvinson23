@@ -13,7 +13,7 @@ export const NavBar = () => {
 			<button class="btn btn-info" type="button" id="allSnacks">All Snacks</button>
 		</li>
 		<li class="nav-item ms-1">
-			<select class="form-select form-select btn-info" aria-label="Select A Topping">
+			<select id="navList" class="form-select form-select btn-info" aria-label="Select A Topping">
 				<option selected>Select A Topping</option>
 			</select>
 		</li>
