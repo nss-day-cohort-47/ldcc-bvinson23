@@ -76,3 +76,8 @@ export const getToppings = (snackId) => {
 	return fetch(`${apiURL}/snackToppings?snackId=${snackId}&_expand=topping`)
 	.then(response => response.json())
 }
+
+export const getToppingsForNav = () => {
+	return fetch(`${apiURL}/snackToppings?_expand=snack&_expand=topping`)
+	.then(response => response.json())
+}
