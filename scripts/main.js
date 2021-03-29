@@ -8,7 +8,7 @@ import { SnackDetails } from "./snacks/SnackDetails.js";
 import { Footer } from "./nav/Footer.js";
 import {
 	logoutUser, setLoggedInUser, loginUser, registerUser, getLoggedInUser,
-	getSnacks, getSingleSnack
+	getSnacks, getSingleSnack, getToppings
 } from "./data/apiManager.js";
 
 
@@ -66,8 +66,12 @@ applicationElement.addEventListener("click", event => {
 	if (event.target.id.startsWith("detailscake")) {
 		const snackId = event.target.id.split("__")[1];
 		getSingleSnack(snackId)
-			.then(response => {
-				showDetails(response);
+			.then(snackObj => {
+				getToppings(snackId)
+				.then(snackToppings => {
+					snackToppings
+					showDetails(snackObj, snackToppings);
+				})
 			})
 	}
 })
@@ -79,9 +83,9 @@ applicationElement.addEventListener("click", event => {
 	}
 })
 
-const showDetails = (snackObj) => {
+const showDetails = (snackObj, snackToppings) => {
 	const listElement = document.querySelector("#mainContent");
-	listElement.innerHTML = SnackDetails(snackObj);
+	listElement.innerHTML = SnackDetails(snackObj, snackToppings);
 }
 //end snack listeners
 
