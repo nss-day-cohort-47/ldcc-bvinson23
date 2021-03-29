@@ -26,8 +26,10 @@ export const NavBar = () => {
 	const addTypeButton = getLoggedInUser().admin ? `
 	<nav class="navbar navbar-light"">
 		<div class="container-fluid">
-			<button class="btn btn-outline-primary" type="button">Add A Type</button>
-		
+		<div>
+			<button id="add-type" class="btn btn-outline-primary" type="button">Add A Type</button>
+			<input name="newType"></input>
+		</div>
 		</div>
 	</nav>` : ""
 

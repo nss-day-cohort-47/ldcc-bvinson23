@@ -81,3 +81,14 @@ export const filterSnackToppings = (toppingId) => {
 	return fetch(`${apiURL}/snackToppings?toppingId=${toppingId}&_expand=snack`)
 	.then(response => response.json())
 }
+
+export const postNewType = (typeObj) => {
+	return fetch(`${apiURL}/types`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(typeObj)
+	})
+	.then(response => response.json())
+}
