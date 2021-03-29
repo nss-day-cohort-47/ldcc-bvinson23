@@ -119,12 +119,7 @@ applicationElement.addEventListener("change", event => {
 		})
 	}
 })
-
-// applicationElement.addEventListener("change", event => {
-// 	if (event.target.id === "form-select form-select btn-info") {
-// 		const
-// 	}
-// })
+//end topping listeners
 
 const checkForUser = () => {
 	if (sessionStorage.getItem("user")) {
@@ -145,13 +140,6 @@ const showLoginRegister = () => {
 
 const showNavBar = () => {
 	applicationElement.innerHTML += NavBar();
-}
-
-const showToppingList = () => {
-	getToppingsForNav()
-	.then(toppingArray => {
-		makeToppingList(toppingArray)
-	})
 }
 
 const showSnackList = () => {
@@ -187,7 +175,7 @@ const createToppingList = () => {
 }
 
 const createEditToppingList = () => {
-	const entryHTMLSelector = document.querySelector(".form-select");
+	const entryHTMLSelector = document.querySelector(".edit-select");
 	getToppings().then(response => {
 		response.forEach((toppingObj, index) => {
 			entryHTMLSelector.options[index+1] = new Option(toppingObj.name, toppingObj.id)
