@@ -77,6 +77,11 @@ export const getToppings = () => {
 	.then(response => response.json())
 }
 
+export const getSnackToppings = (snackId) => {
+	return fetch(`${apiURL}/snackToppings?snackId=${snackId}&_expand=topping`)
+	.then(response => response.json())
+}
+
 export const filterSnackToppings = (toppingId) => {
 	return fetch(`${apiURL}/snackToppings?toppingId=${toppingId}&_expand=snack`)
 	.then(response => response.json())
@@ -96,6 +101,17 @@ export const postNewType = (typeObj) => {
 export const editTopping = (toppingObj) => {
 	return fetch(`${apiURL}/toppings`, {
 		method: "PUT",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(toppingObj)
+	})
+	.then(response => response.json())
+}
+
+export const addTopping = (toppingObj) => {
+	return fetch(`${apiURL}/toppings`, {
+		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
 		},

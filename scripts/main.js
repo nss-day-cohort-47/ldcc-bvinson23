@@ -105,6 +105,7 @@ const showDetails = (snackObj, snackToppings) => {
 
 //topping listeners
 
+//filter snacks by topping
 applicationElement.addEventListener("change", event => {
 	if (event.target.id === "navList") {
 		let snackSelector = event.target.value
@@ -150,6 +151,7 @@ const showNavBar = () => {
 	applicationElement.innerHTML += NavBar();
 }
 
+//show all the snacks
 const showSnackList = () => {
 	getSnacks().then(allSnacks => {
 		const listElement = document.querySelector("#mainContent")
@@ -172,7 +174,7 @@ const startLDSnacks = () => {
 
 }
 
-
+//creates a topping list to populate the dropdown in the navbar
 const createToppingList = () => {
 	const entryHTMLSelector = document.querySelector(".form-select");
 	getToppings().then(response => {
@@ -182,6 +184,7 @@ const createToppingList = () => {
 	})
 }
 
+//creates a topping list to populate the dropdown in the edit form
 const createEditToppingList = () => {
 	const entryHTMLSelector = document.querySelector(".edit-select");
 	getToppings().then(response => {
@@ -191,15 +194,19 @@ const createEditToppingList = () => {
 	})
 }
 
+//creates a form to add a new topping
 export const addToppingForm = () => {
 	return `
-		<div>
-			<button id="add-topping" class="btn btn-outline-primary" type="button">Add A Topping</button>
-			<input name="newTopping"></input>
-		</div>`
+	<div>
+	<button id="add-topping" class="btn btn-outline-primary" type="button">Add A Topping</button>
+	<input name="newTopping"></input>
+	</div>`
 }
+
+//creates a form to edit a topping
 const editToppingForm = (toppingObj) => {
 	return `
 		<input>${toppingObj.name}</input>`
 }
+
 checkForUser();
