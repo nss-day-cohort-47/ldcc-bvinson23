@@ -160,7 +160,7 @@ const startLDSnacks = () => {
 	showSnackList();
 	showFooter();
 	createToppingList();
-	createEditToppingList();
+	// createEditToppingList();
 
 }
 
@@ -174,12 +174,12 @@ const createToppingList = () => {
 	})
 }
 
-const createEditToppingList = () => {
-	const entryHTMLSelector = document.querySelector(".edit-select");
-	getToppings().then(response => {
-		response.forEach((toppingObj, index) => {
-			entryHTMLSelector.options[index+1] = new Option(toppingObj.name, toppingObj.id)
-		})
-	})
-}
+// const createEditToppingList = () => {
+// 	const entryHTMLSelector = document.querySelector(".edit-select");
+// 	getToppings().then(response => {
+// 		response.forEach((toppingObj, index) => {
+// 			entryHTMLSelector.options[index+1] = new Option(toppingObj.name, toppingObj.id)
+// 		})
+// 	})
+// }
 checkForUser();
