@@ -15,7 +15,7 @@ export const SnackDetails = (snackObject, snackToppings) => {
 						<div class="col col-details">Season: ${snackObject.season.name}</div>
 					</div>
 					<div class="row row-cols-1">
-						<div class="col col-details">${snackToppings.map(topping => {
+						<div class="col col-details">Toppings: ${snackToppings.map(topping => {
 							return topping.topping.name
 						}).join(", ")}</div>
 					</div>
