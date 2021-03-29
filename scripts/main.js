@@ -8,7 +8,7 @@ import { SnackDetails } from "./snacks/SnackDetails.js";
 import { Footer } from "./nav/Footer.js";
 import {
 	logoutUser, setLoggedInUser, loginUser, registerUser, getLoggedInUser,
-	getSnacks, getSingleSnack, getToppings, filterSnackToppings
+	getSnacks, getSingleSnack, getToppings, filterSnackToppings, postNewType
 } from "./data/apiManager.js";
 
 
@@ -73,6 +73,20 @@ applicationElement.addEventListener("click", event => {
 					showDetails(snackObj, snackToppings);
 				})
 			})
+	}
+})
+
+applicationElement.addEventListener("click", event => {
+	if (event.target.id === "add-type") {
+		event.preventDefault();
+		const typeEntry = document.querySelector("input[name='newType']").value;
+		const typeObject = {
+			name: typeEntry
+		}
+		postNewType(typeObject)
+		.then(response => {
+			location.reload(true);
+		})
 	}
 })
 
