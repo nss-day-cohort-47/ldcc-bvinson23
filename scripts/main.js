@@ -119,6 +119,14 @@ applicationElement.addEventListener("change", event => {
 		})
 	}
 })
+
+// applicationElement.addEventListener("click", event => {
+// 	if (event.target.id === "edit-topping") {
+// 		let toppingSelector = document.querySelector("input[name='editSelect']").value
+		
+// 		})
+// 	}
+// })
 //end topping listeners
 
 const checkForUser = () => {
@@ -160,7 +168,7 @@ const startLDSnacks = () => {
 	showSnackList();
 	showFooter();
 	createToppingList();
-	// createEditToppingList();
+	createEditToppingList();
 
 }
 
@@ -174,12 +182,24 @@ const createToppingList = () => {
 	})
 }
 
-// const createEditToppingList = () => {
-// 	const entryHTMLSelector = document.querySelector(".edit-select");
-// 	getToppings().then(response => {
-// 		response.forEach((toppingObj, index) => {
-// 			entryHTMLSelector.options[index+1] = new Option(toppingObj.name, toppingObj.id)
-// 		})
-// 	})
-// }
+const createEditToppingList = () => {
+	const entryHTMLSelector = document.querySelector(".edit-select");
+	getToppings().then(response => {
+		response.forEach((toppingObj, index) => {
+			entryHTMLSelector.options[index+1] = new Option(toppingObj.name, toppingObj.id)
+		})
+	})
+}
+
+export const addToppingForm = () => {
+	return `
+		<div>
+			<button id="add-topping" class="btn btn-outline-primary" type="button">Add A Topping</button>
+			<input name="newTopping"></input>
+		</div>`
+}
+const editToppingForm = (toppingObj) => {
+	return `
+		<input>${toppingObj.name}</input>`
+}
 checkForUser();

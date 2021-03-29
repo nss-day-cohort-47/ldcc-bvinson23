@@ -1,4 +1,5 @@
 import { getLoggedInUser } from "../data/apiManager.js"
+import { addToppingForm } from "../main.js"
 
 export const NavBar = () => {
 	//only show navItems and addTypeButton if user is logged in
@@ -13,7 +14,7 @@ export const NavBar = () => {
 			<button class="btn btn-info" type="button" id="allSnacks">All Snacks</button>
 		</li>
 		<li class="nav-item ms-1">
-			<select id="navList" class="edit-select form-select btn-info" aria-label="Select A Topping">
+			<select id="navList" class="form-select form-select btn-info" aria-label="Select A Topping">
 				<option selected>Select A Topping</option>
 			</select>
 		</li>
@@ -30,9 +31,10 @@ export const NavBar = () => {
 			<button id="add-type" class="btn btn-outline-primary" type="button">Add A Type</button>
 			<input name="newType"></input>
 		</div>
+		${addToppingForm()}
 		<div>
 			<button id="edit-toppping" class="btn btn-outline-primary" type="button">Edit A Topping</button>
-			<select id="editList" class="form-select form-select btn-info" aria-label="Select A Topping To Edit">
+			<select id="editList" name="editList" class="edit-select edit-select btn-info" aria-label="Select A Topping">
 				<option selected>Select A Topping To Edit</option>
 			</select>
 		</div>
