@@ -8,7 +8,7 @@ import { SnackDetails } from "./snacks/SnackDetails.js";
 import { Footer } from "./nav/Footer.js";
 import {
 	logoutUser, setLoggedInUser, loginUser, registerUser, getLoggedInUser,
-	getSnacks, getSingleSnack, getToppings, filterSnackToppings, postNewType, getSnackToppings
+	getSnacks, getSingleSnack, getToppings, filterSnackToppings, postNewType, getSnackToppings, addTopping
 } from "./data/apiManager.js";
 
 
@@ -68,10 +68,10 @@ applicationElement.addEventListener("click", event => {
 		getSingleSnack(snackId)
 			.then(snackObj => {
 				getSnackToppings(snackId)
-				.then(snackToppings => {
-					snackToppings
-					showDetails(snackObj, snackToppings);
-				})
+					.then(snackToppings => {
+						snackToppings
+						showDetails(snackObj, snackToppings);
+					})
 			})
 	}
 })
@@ -84,9 +84,9 @@ applicationElement.addEventListener("click", event => {
 			name: typeEntry
 		}
 		postNewType(typeObject)
-		.then(response => {
-			location.reload(true);
-		})
+			.then(response => {
+				location.reload(true);
+			})
 	}
 })
 
@@ -110,21 +110,34 @@ applicationElement.addEventListener("change", event => {
 	if (event.target.id === "navList") {
 		let snackSelector = event.target.value
 		filterSnackToppings(snackSelector)
-		.then(response => {
-			let snackArray = [];
-			response.forEach(topping => {
-				snackArray.push(topping.snack)
+			.then(response => {
+				let snackArray = [];
+				response.forEach(topping => {
+					snackArray.push(topping.snack)
+				})
+				const listElement = document.querySelector("#mainContent")
+				listElement.innerHTML = SnackList(snackArray)
 			})
-			const listElement = document.querySelector("#mainContent")
-			listElement.innerHTML = SnackList(snackArray)
-		})
 	}
 })
 
+applicationElement.addEventListener("click", event => {
+	if (event.target.id === "add-topping") {
+		const toppingName = document.querySelector("input[name='newTopping']")
+		const toppingObject = {
+			name: toppingName.value
+		}
+		addTopping(toppingObject)
+			.then(response => {
+				location.reload(true);
+			})
+	}
+})
+// document.getElementById("add-topping").reset()
 // applicationElement.addEventListener("click", event => {
 // 	if (event.target.id === "edit-topping") {
 // 		let toppingSelector = document.querySelector("input[name='editSelect']").value
-		
+
 // 		})
 // 	}
 // })
@@ -179,7 +192,7 @@ const createToppingList = () => {
 	const entryHTMLSelector = document.querySelector(".form-select");
 	getToppings().then(response => {
 		response.forEach((toppingObj, index) => {
-			entryHTMLSelector.options[index+1] = new Option(toppingObj.name, toppingObj.id)
+			entryHTMLSelector.options[index + 1] = new Option(toppingObj.name, toppingObj.id)
 		})
 	})
 }
@@ -189,7 +202,7 @@ const createEditToppingList = () => {
 	const entryHTMLSelector = document.querySelector(".edit-select");
 	getToppings().then(response => {
 		response.forEach((toppingObj, index) => {
-			entryHTMLSelector.options[index+1] = new Option(toppingObj.name, toppingObj.id)
+			entryHTMLSelector.options[index + 1] = new Option(toppingObj.name, toppingObj.id)
 		})
 	})
 }
@@ -197,10 +210,10 @@ const createEditToppingList = () => {
 //creates a form to add a new topping
 export const addToppingForm = () => {
 	return `
-	<div>
+	<form>
 	<button id="add-topping" class="btn btn-outline-primary" type="button">Add A Topping</button>
-	<input name="newTopping"></input>
-	</div>`
+	<input id="newTopping" name="newTopping"></input>
+	</form>`
 }
 
 //creates a form to edit a topping

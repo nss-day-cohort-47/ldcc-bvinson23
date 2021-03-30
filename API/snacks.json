@@ -209,6 +209,18 @@
     {
       "id": 16,
       "name": "Purple Glitter"
+    },
+    {
+      "name": "Pink Icing",
+      "id": 17
+    },
+    {
+      "name": "Caramel",
+      "id": 18
+    },
+    {
+      "name": "Roasted Peanuts",
+      "id": 19
     }
   ],
   "snackToppings": [
