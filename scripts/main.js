@@ -10,6 +10,8 @@ import {
 	logoutUser, setLoggedInUser, loginUser, registerUser, getLoggedInUser,
 	getSnacks, getSingleSnack, getToppings, filterSnackToppings, postNewType, getSnackToppings, addTopping, editTopping
 } from "./data/apiManager.js";
+import { EditTopping } from "./snacks/EditTopping.js";
+import { AddTopping } from "./snacks/AddTopping.js";
 
 
 
@@ -221,19 +223,27 @@ const createEditToppingList = () => {
 	})
 }
 
-//creates a form to add a new topping
-export const addToppingForm = () => {
-	return `
-	<form>
-	<button id="add-topping" class="btn btn-outline-primary" type="button">Add A Topping</button>
-	<input id="newTopping" name="newTopping"></input>
-	</form>`
+export const showToppingAdd = () => {
+	const entryElement = document.querySelector(".add-edit-form");
+	entryElement.innerHTML = AddTopping()
 }
+export const showToppingEdit = (toppingObj) => {
+	const entryElement = document.querySelector(".add-edit-form");
+	entryElement.innerHTML = EditTopping(toppingObj);
+}
+//creates a form to add a new topping
+// export const addToppingForm = () => {
+// 	return `
+// 	<form>
+// 	<button id="add-topping" class="btn btn-outline-primary" type="button">Add A Topping</button>
+// 	<input id="newTopping" name="newTopping"></input>
+// 	</form>`
+// }
 
 //populates the add toppinng form to edit a topping
-const editToppingForm = (toppingObj) => {
-	return `
-		<input>${toppingObj.name}</input>`
-}
+// const editToppingForm = (toppingObj) => {
+// 	return `
+// 		<input>${toppingObj.name}</input>`
+// }
 
 checkForUser();

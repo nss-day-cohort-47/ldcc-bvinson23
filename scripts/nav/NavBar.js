@@ -1,6 +1,5 @@
 import { getLoggedInUser } from "../data/apiManager.js"
-import { addToppingForm } from "../main.js"
-
+import { showToppingAdd, showToppingEdit } from "../main.js"
 export const NavBar = () => {
 	//only show navItems and addTypeButton if user is logged in
 	
@@ -32,16 +31,16 @@ export const NavBar = () => {
 			<input name="newType"></input>
 		</div>
 		<div class="add-edit-form>
-			${addToppingForm()}
-		</div>
-		<div>
-			<button id="edit-toppping" class="btn btn-outline-primary" type="button">Edit A Topping</button>
-			<select id="editList" name="editList" class="edit-select edit-select btn-info" aria-label="Select A Topping">
-				<option selected>Select A Topping To Edit</option>
-			</select>
+			${showToppingAdd()}
 		</div>
 		</div>
-	</nav>` : ""
+		</nav>` : ""
+		// <div>
+		// 	<button id="edit-toppping" class="btn btn-outline-primary" type="button">Edit A Topping</button>
+		// 	<select id="editList" name="editList" class="edit-select edit-select btn-info" aria-label="Select A Topping">
+		// 		<option selected>Select A Topping To Edit</option>
+		// 	</select>
+		// </div>
 
 	return `
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
