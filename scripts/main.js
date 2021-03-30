@@ -8,7 +8,7 @@ import { SnackDetails } from "./snacks/SnackDetails.js";
 import { Footer } from "./nav/Footer.js";
 import {
 	logoutUser, setLoggedInUser, loginUser, registerUser, getLoggedInUser,
-	getSnacks, getSingleSnack, getToppings, filterSnackToppings, postNewType, getSnackToppings, addTopping
+	getSnacks, getSingleSnack, getToppings, filterSnackToppings, postNewType, getSnackToppings, addTopping, editTopping
 } from "./data/apiManager.js";
 
 
@@ -133,14 +133,28 @@ applicationElement.addEventListener("click", event => {
 			})
 	}
 })
-// document.getElementById("add-topping").reset()
-// applicationElement.addEventListener("click", event => {
-// 	if (event.target.id === "edit-topping") {
-// 		let toppingSelector = document.querySelector("input[name='editSelect']").value
 
-// 		})
-// 	}
-// })
+applicationElement.addEventListener("change", event => {
+	event.preventDefault();
+	if (event.target.id === "editList") {
+		let toppingSelector = document.querySelector("select[name='editList']").value
+		editToppingForm(toppingSelector)
+	}
+})
+applicationElement.addEventListener("click", event => {
+	if (event.target.id === "edit-topping") {
+		let toppingSelector = document.querySelector("input[name='editSelect']").value
+		const entryElement = document.querySelector(".add-edit-form");
+		entryElement.innerHTML = editTopping(toppingObject);
+		const toppingObject = {
+			name: toppingSelector
+		}
+		.then(response => {
+			location.reload(true);
+		})
+	}
+})
+
 //end topping listeners
 
 const checkForUser = () => {
@@ -216,7 +230,7 @@ export const addToppingForm = () => {
 	</form>`
 }
 
-//creates a form to edit a topping
+//populates the add toppinng form to edit a topping
 const editToppingForm = (toppingObj) => {
 	return `
 		<input>${toppingObj.name}</input>`

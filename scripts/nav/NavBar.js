@@ -31,7 +31,9 @@ export const NavBar = () => {
 			<button id="add-type" class="btn btn-outline-primary" type="button">Add A Type</button>
 			<input name="newType"></input>
 		</div>
-		${addToppingForm()}
+		<div class="add-edit-form>
+			${addToppingForm()}
+		</div>
 		<div>
 			<button id="edit-toppping" class="btn btn-outline-primary" type="button">Edit A Topping</button>
 			<select id="editList" name="editList" class="edit-select edit-select btn-info" aria-label="Select A Topping">

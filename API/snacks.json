@@ -221,6 +221,10 @@
     {
       "name": "Roasted Peanuts",
       "id": 19
+    },
+    {
+      "name": "Fudge Glaze",
+      "id": 20
     }
   ],
   "snackToppings": [
