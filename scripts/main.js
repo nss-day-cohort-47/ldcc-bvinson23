@@ -162,6 +162,9 @@ applicationElement.addEventListener("click", event => {
 export const showToppingAdd = () => {
 	return AddTopping()
 }
+
+//---------------WORKING ON THE EDIT TOPPING FEATURE TO GET THE DROPDOWN SELECTION 
+// 					TO TAKE THE PLACE OF THE ADD A TOPPING FIELD----------------------------------//
 export const showToppingEdit = (toppingObj) => {
 	const entryElement = document.querySelector(".entryForm");
 	entryElement.innerHTML = EditTopping(toppingObj);
