@@ -31,19 +31,19 @@ export const NavBar = () => {
 				<input name="newType"></input>
 			</div>
 			<div>
-				<form>
+				<form class="entryForm">
 	        		<button id="add-topping" class="btn btn-outline-primary" type="button">Add A Topping</button>
 	        		<input id="newTopping" name="newTopping"></input>
 	    		</form>
 			</div>
+			<div>
+				<button id="edit-toppping" class="btn btn-outline-primary" type="button">Edit A Topping</button>
+				<select id="editList" name="editList" class="edit-select edit-select btn-info" aria-label="Select A Topping">
+					<option selected>Select A Topping To Edit</option>
+				</select>
+			</div>
 		</div>
 		</nav>` : ""
-		// <div>
-		// 	<button id="edit-toppping" class="btn btn-outline-primary" type="button">Edit A Topping</button>
-		// 	<select id="editList" name="editList" class="edit-select edit-select btn-info" aria-label="Select A Topping">
-		// 		<option selected>Select A Topping To Edit</option>
-		// 	</select>
-		// </div>
 
 	return `
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
