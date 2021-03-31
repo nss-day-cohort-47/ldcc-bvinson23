@@ -26,13 +26,16 @@ export const NavBar = () => {
 	const addTypeButton = getLoggedInUser().admin ? `
 	<nav class="navbar navbar-light"">
 		<div class="container-fluid">
-		<div>
-			<button id="add-type" class="btn btn-outline-primary" type="button">Add A Type</button>
-			<input name="newType"></input>
-		</div>
-		<div class="add-edit-form>
-			${showToppingAdd()}
-		</div>
+			<div>
+				<button id="add-type" class="btn btn-outline-primary" type="button">Add A Type</button>
+				<input name="newType"></input>
+			</div>
+			<div>
+				<form>
+	        		<button id="add-topping" class="btn btn-outline-primary" type="button">Add A Topping</button>
+	        		<input id="newTopping" name="newTopping"></input>
+	    		</form>
+			</div>
 		</div>
 		</nav>` : ""
 		// <div>
